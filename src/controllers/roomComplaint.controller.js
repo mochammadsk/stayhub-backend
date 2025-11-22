@@ -107,7 +107,6 @@ exports.create = async (req, res) => {
 exports.update = async (req, res) => {
   const { title, description } = req.body;
   try {
-    // Check data exists
     const complaint = await Complaint.findById(req.params.id);
     if (!complaint) {
       // Delete images if complaint not found
@@ -207,7 +206,6 @@ exports.updateResponse = async (req, res) => {
 // Delete complaint by id
 exports.deleteById = async (req, res) => {
   try {
-    // Check data exists
     const complaint = await Complaint.findById(req.params.id);
     if (!complaint) {
       return res.status(404).json({ message: 'Data not found' });

@@ -6,7 +6,6 @@ dotenv.config();
 // Show data user
 exports.getAll = async (req, res) => {
   try {
-    // Check if user exists
     const user = await User.find();
     if (user.length === 0) {
       return res.status(404).json({ message: 'User not found!' });
@@ -21,7 +20,6 @@ exports.getAll = async (req, res) => {
 // Show data user by id
 exports.getById = async (req, res) => {
   try {
-    // Check if user exists
     const user = await User.findById(req.params.id);
     if (!user) {
       return res.status(404).json({ message: 'User not found!' });
@@ -37,7 +35,6 @@ exports.getById = async (req, res) => {
 exports.updateRole = async (req, res) => {
   const role = req.body;
   try {
-    // Check if user exists
     const user = await User.findByIdAndUpdate(req.params.id, role, {
       new: true,
     });
@@ -54,7 +51,6 @@ exports.updateRole = async (req, res) => {
 // Delete user data
 exports.deleteById = async (req, res) => {
   try {
-    // Check if user exists
     const user = await User.findByIdAndDelete(req.params.id);
     if (!user) {
       return res.status(404).json({ message: 'User not found!' });

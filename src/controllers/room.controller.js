@@ -81,7 +81,6 @@ exports.getById = async (req, res) => {
         select: 'status',
       });
 
-    // Check if room exists
     if (!room) {
       return res.status(404).json({ message: 'Data not found' });
     }
@@ -180,7 +179,6 @@ exports.create = async (req, res) => {
 exports.update = async (req, res) => {
   const { name, type } = req.body;
   try {
-    // Check if room exists
     const room = await Room.findById(req.params.id);
     if (!room) {
       // Delete images if Data not found
@@ -229,7 +227,6 @@ exports.update = async (req, res) => {
 // Delete room by id
 exports.deleteById = async (req, res) => {
   try {
-    // Check if room exists
     const room = await Room.findById(req.params.id);
     if (!room) {
       return res.status(404).json({ message: 'Data tidak ditemukan' });

@@ -13,7 +13,6 @@ const { google } = require('googleapis');
 // Register account for user
 exports.register = async (req, res) => {
   try {
-    // Check if email already exists
     const user = await User.findOne({ email: req.body.email });
     if (user) {
       return res.status(400).json({ message: 'Email already exists' });
