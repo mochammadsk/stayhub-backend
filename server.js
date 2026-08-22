@@ -6,10 +6,7 @@ dotenv.config();
 
 // Database config
 const db = {
-  url:
-    process.env.NODE_ENV === 'production'
-      ? process.env.DB_PRODUCTZILLA_URI
-      : process.env.DB_LOCAL_URI,
+  url: process.env.NODE_ENV === 'production' ? process.env.DB_PROD_URI : process.env.DB_DEV_URI,
 };
 
 // Connect to MongoDB
@@ -17,9 +14,7 @@ const connectDB = async () => {
   try {
     await mongoose.connect(db.url, {});
     console.log(
-      `Connected to ${
-        process.env.NODE_ENV === 'production' ? 'ProductZilla' : 'local'
-      } database!`
+      `Connected to ${process.env.NODE_ENV === 'production' ? 'production' : 'development'} database!`
     );
   } catch (error) {
     console.error(`Failed to connect - ${error.message}`);
